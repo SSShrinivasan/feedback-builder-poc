@@ -1,0 +1,188 @@
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial;
+}
+
+.preview-card {
+  flex: 0 0 420px;   /* fixed width */
+  padding: 40px;
+  background: #f4f6f8;
+}
+
+.top-card {
+  background: #e91e63;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.question {
+    background: #00bfa6;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.emoji-row img,
+.emoji-select img {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid #00bfa6;
+  border-radius: 5px;
+}
+
+.form-section {
+  flex: 1;
+  padding: 40px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 16px;
+}
+
+.toggle button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+/* css demo for page 2*/
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.category-box {
+ background: #2c2c2c;
+}
+
+.category-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-row:last-child {
+  border-bottom: none;
+}
+
+.category-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.check-box.active {
+  background: #1aa39d;
+  color: white;
+  border: none;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+/*page 4 css*/
+.reward-box {
+  background: #460a0d;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.reward-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.points-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.reward-message {
+  margin-top: 12px;
+  background: #0d1316;
+  padding: 10px;
+  border-radius: 6px;
+  color: #0c5460;
+}
+
+.reward-disabled {
+  margin-top: 12px;
+  background: #3f145c;
+  padding: 10px;
+  border-radius: 6px;
+}
+/*page 5*/
+.money-icon {
+  width: 22px;
+  height: 22px;
+  color: #16a34a; /* green */
+}
+.gift-icon {
+  width: 22px;
+  height: 22px;
+  color: #7c3aed; /* purple */
+}
+.icon-box {
+  width: 48px;
+  height: 48px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timing-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: #2c2c2c;
+  transition: 0.3s;
+}
+
+.timing-card.active {
+  border: 2px solid #1aa39d;
+  background: #1e2d2c;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
