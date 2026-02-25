@@ -14,6 +14,7 @@ const emojiList = [
     "https://app.reelo.io/assets/images/feedback/emoji/emoji_4.svg",
     "https://app.reelo.io/assets/images/feedback/emoji/emoji_5.svg",
   ];
+
   
 
 
@@ -48,6 +49,30 @@ const emojiList = [
       { name: `New Category ${items.length + 1}`, selected: true }
     ]);
   };
+  const handleSubmit = async () => {
+  try {
+    const fullPayload = {
+      ...data,
+      categories: items   // include items here
+    };
+
+    console.log("Sending JSON:");
+    console.log(JSON.stringify(fullPayload, null, 2));
+
+    await fetch("http://localhost:5000/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(fullPayload)
+    });
+
+    onNext();
+
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
 
 
   return (
@@ -117,6 +142,7 @@ const emojiList = [
       <button className="add-btn" onClick={addCategory}>
         + Add More
       </button>
+      <button onClick={handleSubmit}>3Next</button>
       <button onClick={onNext}> Next</button>
     </div>
       </div>

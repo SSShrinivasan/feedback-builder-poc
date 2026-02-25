@@ -17,6 +17,27 @@ const emojiList = [
     "https://app.reelo.io/assets/icons/digits/digit_4.svg",
     "https://app.reelo.io/assets/icons/digits/digit_5.svg",
   ];
+  const handleSubmit = async () => {
+  console.log("Sending data to backend:", data);
+  // console.log("Sending ID:", storedId);
+
+  try {
+    const response = await fetch("http://localhost:5000/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    console.log("Server response:", result);
+
+    onNext();
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
   const ratingArray =
     data.ratingType === "emoji" ? emojiList : digitList;
 
@@ -140,7 +161,8 @@ const emojiList = [
 
        
         <button onClick={onNext}> Next</button>
-      
+        
+      <button onClick={handleSubmit}>2Next</button>
 
       </div>
     </div>

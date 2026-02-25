@@ -33,13 +33,13 @@ import "../pages/FeedbackPage.css";
 import { useState, useEffect } from "react";
 import { Gift, Wallet, Clock } from "lucide-react";
 
-export default function     
-FeedbackPage6({ data, onNext }) {
+export default function FeedbackPage6({ data, onNext }) {
 
   const [timing, setTiming] = useState(() => {
     const saved = localStorage.getItem("feedbackTiming");
     return saved ? JSON.parse(saved) : "instant";
   });
+  console.log("Page 6 rendering");
 
   useEffect(() => {
     localStorage.setItem("feedbackTiming", JSON.stringify(timing));

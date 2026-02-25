@@ -25,6 +25,27 @@ const emojiList = [
   ];
     const [rewardEnabled, setRewardEnabled] = useState(false);
   const [points, setPoints] = useState(100);
+  const handleSubmit = async () => {
+  const feedback = {
+    reward: {
+      enabled: rewardEnabled,
+      points: Number(points)
+    }
+  };
+
+  console.log("Sending reward JSON:");
+  console.log(JSON.stringify(feedback, null, 2));
+
+  await fetch("http://localhost:5000/feedback", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(feedback)
+  });
+
+  console.log("Sent successfully");
+};
 
 
 
@@ -106,6 +127,7 @@ const emojiList = [
             You need to activate loyalty to give bonus points reward for feedback
           </div>
         )}
+        <button onClick={handleSubmit}>Submit</button>
         <button onClick={onNext}> Next</button>
       </div>
         </div>

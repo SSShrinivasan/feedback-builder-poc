@@ -1,0 +1,110 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+const express = require("express");
+const mongoose = require("mongoose");
+const app = express();
+app.use(express.json());
+const cors = require("cors");
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+const uri = "mongodb+srv://311822104041_db_user:AwUDb1gba4jfHAKa@cluster0.clpetmi.mongodb.net/feedbacksurvey";
+mongoose.connect(uri)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch(err => console.log("Connection error:", err));
+
+const feedbackSchema = new mongoose.Schema({
+  feedbackQuestion: String,
+  positive: String,
+  negative: String,
+  ratingType: String,
+  selectedRating: Number,
+
+  feedbackTiming: {
+    type: {
+      type: String
+    }
+  },
+
+  preview: {
+    spent: String,
+    date: String,
+    time: String
+  },
+
+  categories: [
+    {
+      name: String,
+      selected: Boolean
+    }
+  ],
+
+  askCustomers: {
+    options: [
+      {
+        name: String,
+        selected: Boolean
+      }
+    ]
+  },
+
+  reward: {
+    enabled: Boolean,
+    points: Number
+  }
+
+}, { timestamps: true });
+const Feedback = mongoose.model("Feedback", feedbackSchema);
+
+// app.post("/feedback", async (req, res) => {
+//   try {
+//     console.log("======= RECEIVED JSON =======");
+//     console.log(JSON.stringify(req.body, null, 2));
+//     console.log("=============================");
+
+//     const newFeedback = await Feedback.create(req.body);
+
+//     res.status(201).json({
+//       message: "Feedback saved successfully",
+//       data: newFeedback
+//     });
+
+//   } catch (error) {
+//     console.error("Save error:", error);
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+app.post("/feedback", async (req, res) => {
+  try {
+        console.log("======== INCOMING REQUEST ========");
+    console.log("Body:", JSON.stringify(req.body, null, 2));
+    console.log("==================================");
+    const { _id, ...data } = req.body;
+
+    let feedback;
+
+    if (_id) {
+      // Update existing document
+      feedback = await Feedback.findOneAndUpdate(
+        { _id },
+        { $set: data },
+        { returnDocument: "after" }
+      );
+    } else {
+      // Create new document
+      feedback = await Feedback.create(data);
+    }
+
+    res.status(200).json(feedback);
+    console.log("Sending ID:", storedId);
+
+  } catch (err) {
+    console.error("Feedback save error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});

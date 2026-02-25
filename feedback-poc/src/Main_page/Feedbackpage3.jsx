@@ -48,6 +48,39 @@ const toggleOption = (index) => {
     setNewOption("");
   };
 
+const handleSubmit = async () => {
+  try {
+    const fullPayload = {
+      ...data,
+      askCustomers: {
+        options: options   
+      }
+    };
+
+    console.log("======== SENDING TO BACKEND ========");
+    console.log(JSON.stringify(fullPayload, null, 2));
+    console.log("=====================================");
+
+    const response = await fetch("http://localhost:5000/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(fullPayload)
+    });
+
+    const result = await response.json();
+
+    console.log("======== BACKEND RESPONSE ========");
+    console.log(JSON.stringify(result, null, 2));
+    console.log("==================================");
+
+    onNext();
+
+  } catch (err) {
+    console.error(" Error submitting:", err);
+  }
+};
 
   return (
     <div className="container">
@@ -117,6 +150,7 @@ const toggleOption = (index) => {
             + Add More
           </button>
           <button onClick={onNext}> Next</button>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
 
       </div>
