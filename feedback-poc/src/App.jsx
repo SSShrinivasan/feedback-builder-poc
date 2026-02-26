@@ -5,7 +5,7 @@ import FeedbackPage3 from "./Main_page/Feedbackpage3";
 import FeedbackPage4 from "./Main_page/Feedbackpage4";
 import FeedbackPage5 from "./Main_page/Feedbackpage5";
 import FeedbackPage6 from "./Main_page/Feedbackpage6";
-
+import FeedbackPage7 from "./Main_page/FeedbackPage7";
 function App() {
   const [data, setData] = useState({
     feedbackQuestion: "How was your experience?",
@@ -28,7 +28,9 @@ function App() {
     4: FeedbackPage4,
     5: FeedbackPage5,
     6: FeedbackPage6,
+    7:FeedbackPage7,
   };
+  
 
   const totalSteps = Object.keys(stepMap).length;
 

@@ -186,3 +186,71 @@ input {
   gap: 15px;
   margin-bottom: 8px;
 }
+ /*page 7 css -icon */
+
+.external-card {
+  background: #851010ab;
+  border: 1px solid #b9e2dd;
+  border-radius: 12px;
+  padding: 20px;
+  width: 420px;
+}
+
+.external-header h3 {
+  margin: 0;
+}
+
+.external-header p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.preferred-tag {
+  margin: 15px 0;
+  font-size: 13px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.channel-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(12, 1, 2);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #000000;
+}
+
+.channel-card.active {
+  border: 2px solid #22c55e;
+}
+
+.channel-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.whatsapp {
+  color: #25D366;
+}
+
+.sub-text {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.info-box {
+  background: #e6f4ff;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}

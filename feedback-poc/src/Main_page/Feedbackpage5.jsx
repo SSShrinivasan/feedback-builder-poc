@@ -8,7 +8,7 @@ export default function FeedbackPage5({ data, onNext }) {
     const saved = localStorage.getItem("feedbackTiming");
     return saved ? JSON.parse(saved) : "instant";
   });
-  console.log("Sending ID:", storedId);
+
 
   useEffect(() => {
     localStorage.setItem("feedbackTiming", JSON.stringify(timing));
