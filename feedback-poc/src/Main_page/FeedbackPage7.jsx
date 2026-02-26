@@ -20,6 +20,28 @@ export default function FeedbackPage7({ onNext }) {
       address: ""
     }
   });
+  const handleSubmit = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/feedback-channels", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        whatsapp: channels.whatsapp.number,
+        sms: channels.sms.number,
+        email: channels.email.address
+      })
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    onNext(); // move to next page after success
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
   // Toggle enabled state
   const toggleChannel = (type) => {
@@ -159,8 +181,9 @@ export default function FeedbackPage7({ onNext }) {
           )}
 
         </div>
+        <button onClick={handleSubmit}>Next</button>
 
-        <button onClick={onNext}>Next</button>
+        {/* <button onClick={onNext}>Next</button> */}
       </div>
     </div>
   );
