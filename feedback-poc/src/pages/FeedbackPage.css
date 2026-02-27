@@ -254,3 +254,30 @@ input {
   font-size: 13px;
   margin-bottom: 15px;
 }
+/* moblie version */
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .preview-card {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .external-card {
+    width: 100%;
+  }
+
+  .timing-card {
+    padding: 15px;
+  }
+
+}
