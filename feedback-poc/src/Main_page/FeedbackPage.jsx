@@ -31,7 +31,7 @@ const emojiList = [
     });
 
     const result = await response.json();
-    console.log("Server response:", result);
+    // console.log("Server response:", result);
 
     onNext();
   } catch (err) {
